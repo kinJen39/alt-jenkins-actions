@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: 
       - '$default-branch'
-      - jena
+      - 'jena'
 jobs:
 
   build:

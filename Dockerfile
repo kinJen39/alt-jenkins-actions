@@ -4,7 +4,7 @@ MAINTAINER Angello Maggio "angellom@jfrog.com"
 RUN apt-get update -y
 
 # Another comment to make a pull request from jen branch
-RUN apt-get install -y python-pip python-dev build-essential
+RUN apt-get install -y python3-pip python3 build-essential
 ADD . /flask-app
 WORKDIR /flask-app
 # Another comment to make a pull request from jena branch

@@ -7,6 +7,7 @@ RUN apt-get update -y
 RUN apt-get install -y python-pip python-dev build-essential
 ADD . /flask-app
 WORKDIR /flask-app
+# Another comment to make a pull request from jena branch
 RUN pip install -r requirements.txt
 ENTRYPOINT ["python"]
 CMD ["flask-docker.py"]

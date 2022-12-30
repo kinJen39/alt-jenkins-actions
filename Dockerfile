@@ -10,4 +10,5 @@ WORKDIR /flask-app
 # Another comment to make a pull request from jena branch, second try, third try, fourth try
 RUN pip install -r requirements.txt
 ENTRYPOINT ["python"]
+# Kim comment
 CMD ["flask-docker.py"]

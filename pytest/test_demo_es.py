@@ -26,15 +26,6 @@ def test_ping_xpass():
     response = os.system("ping " + ("-n 1 " if  platform.system().lower()=="windows" else "-c 1 ") + hostname)
     assert response == 0
 
-# test fail: incorrect credentials
-def test_invalid_log_in():
-    url = "https://reqres.in/api/login/"
-    credentials = {'email': 'eve.holt@reqres.in', 'password': 'cityslick'}
-    response = requests.post(url, data = credentials, verify = False)
-    token = json.loads(response.text)
-    assert response.status_code == 400
-    assert token['token'] == "QpwL5tke4Pnpja7X4"
-
 # expected failure, no SSL certificate
 @pytest.mark.xfail(reason = "no SSL certificate")
 def test_curl():

@@ -1,7 +1,6 @@
 import os, platform
 import datetime
 import pytest
-import requests
 import json
 import random
 

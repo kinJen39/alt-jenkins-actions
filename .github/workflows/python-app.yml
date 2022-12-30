@@ -65,5 +65,5 @@ jobs:
     - name: Test with pytest
       run: |
         cd pytest
-        pytest
+        pytest test_fruits.py test_append.py test_junit.py
         

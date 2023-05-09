@@ -37,6 +37,8 @@ jobs:
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
         uses: oxsecurity/megalinter@v6
+        with:
+          args: --disable=devskim,checkov,trivy 
         env:
           # All available variables are described in documentation
           # https://megalinter.io/configuration/

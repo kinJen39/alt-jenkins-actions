@@ -38,7 +38,7 @@ jobs:
         # More info at https://megalinter.io/flavors/
         uses: oxsecurity/megalinter@v6
         with:
-          args: --disable=devskim,checkov,trivy 
+          args: --enable=npm-groovy-lint
         env:
           # All available variables are described in documentation
           # https://megalinter.io/configuration/

@@ -47,8 +47,8 @@ jobs:
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
           # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
           DISABLE: SPELL, YAMLLINT
-          DOCKER_OPTIONS: "-v ${{ github.workspace }}:/tmp/lint -e RULES_FILES=rules.yaml"
-          RULES_FILES: rules.yaml
+          DOCKER_OPTIONS: "-v ${{ github.workspace }}:/tmp/lint -e RULES_FILES=/tmp/lint/rules.yaml"
+          RULES_FILES: /tmp/lint/rules.yaml
           
       - name: Customize groovy rules
         run: |

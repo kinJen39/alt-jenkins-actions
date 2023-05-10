@@ -1,0 +1,4 @@
+groovy:
+  Indentation:
+    severity: error
+    value: 4

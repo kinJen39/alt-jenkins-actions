@@ -30,7 +30,7 @@ dependencies {
     implementation 'org.codehaus.groovy:groovy-all:2.4.16'
     //implementation 'org.jenkins-ci.main:jenkins-core:2.168@jar'
     //implementation 'org.jenkins-ci.plugins.workflow:workflow-step-api:2.19@jar'
-    implementation 'org.kohsuke.stapler:stapler:1.256'
+    //implementation 'org.kohsuke.stapler:stapler:1.256'
 
     testImplementation 'junit:junit:4.12'
 }

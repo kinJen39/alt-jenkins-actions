@@ -1,0 +1,46 @@
+plugins {
+    id 'groovy'
+    id 'jacoco'
+    id 'codenarc'
+}
+
+repositories {
+    mavenCentral()
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDir 'src'
+        }
+    }
+    test {
+        groovy {
+            srcDir 'test'
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.yaml:snakeyaml:1.19'
+    implementation 'org.codehaus.groovy:groovy-all:2.4.16'
+    implementation 'org.jenkins-ci.main:jenkins-core:2.168@jar'
+    implementation 'org.jenkins-ci.plugins.workflow:workflow-step-api:2.19@jar'
+    implementation 'org.kohsuke.stapler:stapler:1.256'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+codenarc {
+    ignoreFailures = true
+    //reportFormat = 'console'
+    toolVersion = '2.0.0'
+    configFile = file('config/codenarc.groovy')
+    sourceSets = sourceSets.main.groovy.srcDirs
+}
+
+project.gradle.startParameter.excludedTaskNames.add('check')

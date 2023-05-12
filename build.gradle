@@ -33,6 +33,9 @@ dependencies {
     //implementation 'org.kohsuke.stapler:stapler:1.256'
 
     testImplementation 'junit:junit:4.12'
+    
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.32'
+    compile group: 'log4j', name: 'log4j', version: '2.15.0'
 }
 
 codenarc {

@@ -25,3 +25,10 @@ jobs:
       
       - name: Build with Gradle
         run: gradle build CodenarcMain --info
+      
+      - name: Upload Codenarc report
+        uses: actions/upload-artifact@v2
+        with:
+          name: Codenarc Report
+          path: build/codenarc-report
+    

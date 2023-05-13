@@ -24,4 +24,4 @@ jobs:
           distribution: 'temurin'
       
       - name: Build with Gradle
-        run: gradle build CodenarcMain
+        run: gradle build CodenarcMain --info

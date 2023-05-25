@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
       
       - name: Build with Gradle
-        run: gradle build CodenarcMain --info
+        run: gradle build CodenarcMain groovydoc --info
       
       - name: Upload Codenarc report
         uses: actions/upload-artifact@v2

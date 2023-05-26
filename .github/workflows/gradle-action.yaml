@@ -47,7 +47,7 @@ jobs:
       - name: Copy groovydoc files
         run: |
           mkdir generated_files
-          cp build/docs/groovydoc/* generated_files/
+          cp -r build/docs/groovydoc/* generated_files/
 
       - name: Configure Git
         run: |

@@ -41,6 +41,7 @@ codenarc {
 project.gradle.startParameter.excludedTaskNames.add('check')
 
 task extractCodenarcReport(type: Copy) {
+    dependsOn codenarcMain
     from "$buildDir/reports/codenarc"
     include '*.html'
     into "$buildDir/codenarc-report"

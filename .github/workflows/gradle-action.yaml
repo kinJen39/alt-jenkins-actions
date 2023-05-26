@@ -47,7 +47,7 @@ jobs:
       - name: Copy groovydoc files
         run: |
           mkdir generated_files
-          cp -r build/docs/groovydoc/* .
+          cp -r build/docs/groovydoc/* groovydoc_dir
 
       - name: Configure Git
         run: |
@@ -63,6 +63,6 @@ jobs:
           
       - name: Commit and push changes
         run: |
-          git add .
+          git add groovydoc_dir
           git commit -m "Update documentation"
           git push origin gh-pages   

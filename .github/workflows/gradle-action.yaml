@@ -38,8 +38,28 @@ jobs:
           name: Codenarc Report 
           path: build/reports/codenarc
       
-      - name: Deploy documentation
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/docs/groovydoc
+      #- name: Deploy documentation
+      #  uses: peaceiris/actions-gh-pages@v3
+      #  with:
+      # github_token: ${{ secrets.GITHUB_TOKEN }}
+      #    publish_dir: build/docs/groovydoc
+
+      - name: Copy groovydoc files
+        run: |
+          mkdir generated_files
+          cp build/docs/groovydoc* generated_files/
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+      - name: Create and switch to gh-pages
+        run: |
+          git checkout gh-pages 
+          
+      - name: Commit and push changes
+        run: |
+          git add generated_files
+          git commit -m "Update documentation"
+          git push origin gh-pages   

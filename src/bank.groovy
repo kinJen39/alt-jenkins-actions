@@ -20,7 +20,15 @@ class BankAccount {
             println "Insufficient funds. Withdrawal cancelled."
         }
     }
-
+    
+    void withdraw_2(double amount) {
+        if (amount <= balance) {
+            balance -= amount
+            println "Withdrawal of $amount successful. New balance: $balance"
+        } else {
+            println "Insufficient funds. Second withdrawal cancelled."
+        }
+    }
     void displayBalance() {
         println "Account: $accountNumber, Balance: $balance"
     }

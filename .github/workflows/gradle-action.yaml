@@ -61,6 +61,6 @@ jobs:
           
       - name: Commit and push changes
         run: |
-          git add generated_files
+          git add -A
           git commit -m "Update documentation"
           git push origin gh-pages   

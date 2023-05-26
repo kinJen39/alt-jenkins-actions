@@ -56,6 +56,7 @@ jobs:
           
       - name: Create and switch to gh-pages
         run: |
+          git fetch origin
           git checkout gh-pages 
           
       - name: Commit and push changes

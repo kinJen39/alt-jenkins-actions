@@ -57,9 +57,7 @@ jobs:
       - name: Create and switch to gh-pages
         run: |
           git fetch origin
-          git stash
           git checkout gh-pages 
-          git stash pop
           
       - name: Commit and push changes
         run: |

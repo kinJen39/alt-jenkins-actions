@@ -26,9 +26,14 @@ jobs:
       - name: Build with Gradle
         run: gradle build CodenarcMain groovydoc --info
       
-      - name: Upload Codenarc report
+      - name: Upload Groovydoc
         uses: actions/upload-artifact@v2
         with:
-          name: Codenarc Report
+          name: Groovy Documentation
           path: build/docs/groovydoc
-    
+          
+      - name: Upload Codenarc Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: Codenarc Report 
+          path: build/reports/codenarc

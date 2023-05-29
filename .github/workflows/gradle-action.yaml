@@ -59,11 +59,17 @@ jobs:
       - name: Create and switch to gh-pages
         run: |
           git branch
+          echo "after branch"
           git status
+          echo "after git status"
           git fetch origin
-          git stash push -- docs/
-          git checkout gh-pages
+          echo "after fetch"
+          git stash docs/
+          echo "after stash"
+          git checkout -f gh-pages
+          echo "checkout gh pages"
           git stash pop
+          echo "stash pop"
           
       - name: Commit and push changes
         run: |

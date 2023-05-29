@@ -9,7 +9,9 @@
 
 name: Java CI
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -56,6 +58,8 @@ jobs:
           
       - name: Create and switch to gh-pages
         run: |
+          git branch
+          git status
           git fetch origin
           git checkout gh-pages 
           

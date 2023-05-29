@@ -64,12 +64,8 @@ jobs:
           echo "after git status"
           git fetch origin
           echo "after fetch"
-          git stash docs/
-          echo "after stash"
           git checkout -f gh-pages
           echo "checkout gh pages"
-          git stash pop
-          echo "stash pop"
           
       - name: Commit and push changes
         run: |

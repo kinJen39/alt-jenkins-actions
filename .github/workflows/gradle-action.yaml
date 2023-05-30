@@ -66,8 +66,8 @@ jobs:
           git fetch origin
           echo "git checkout -f gh-pages"
           git checkout -f gh-pages
-          echo "mv -f build/docs/groovydoc/* docs/"
-          mv -f build/docs/groovydoc/* docs/
+          echo "mv -r -f build/docs/groovydoc/* docs/"
+          mv -r -f build/docs/groovydoc/* docs/
           
       - name: Commit and push changes
         run: |

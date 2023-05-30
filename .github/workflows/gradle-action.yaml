@@ -58,19 +58,24 @@ jobs:
           
       - name: Create and switch to gh-pages
         run: |
+          echo "git branch"
           git branch
-          echo "after branch"
+          echo "git branch"
           git status
-          echo "after git status"
+          echo "git fetch origin"
           git fetch origin
-          echo "after fetch"
+          echo "git checkout -f gh-pages"
           git checkout -f gh-pages
-          echo "checkout gh pages"
           
       - name: Commit and push changes
         run: |
+          echo "git branch"
           git branch
+          echo "git status"
           git status
+          echo "git add docs/"
           git add docs/
+          echo "git commit -m Update documentation"
           git commit -m "Update documentation"
+          echo "git push origin gh-pages"
           git push origin gh-pages   

@@ -69,7 +69,7 @@ jobs:
           echo "rm -r build/docs/groovydoc/DefaultPackage"
           rm -r build/docs/groovydoc/DefaultPackage
           echo "mv -r -f build/docs/groovydoc/* docs/"
-          mv -f build/docs/groovydoc/* docs/
+          mv -rf build/docs/groovydoc/* docs/
           
       - name: Commit and push changes
         run: |

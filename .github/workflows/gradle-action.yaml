@@ -70,7 +70,7 @@ jobs:
           rm -r docs
           echo "mkdir docs"
           mkdir docs
-          echo "mv build/docs/groovydoc/* docs/"
+          echo "cp build/docs/groovydoc/* docs/"
           mv build/docs/groovydoc/* docs/
           
       - name: Commit and push changes

@@ -66,6 +66,8 @@ jobs:
           git fetch origin
           echo "git checkout -f gh-pages"
           git checkout -f gh-pages
+          echo "rm -r build/docs/groovydoc/DefaultPackage"
+          rm -r build/docs/groovydoc/DefaultPackage
           echo "mv -r -f build/docs/groovydoc/* docs/"
           mv -r -f build/docs/groovydoc/* docs/
           

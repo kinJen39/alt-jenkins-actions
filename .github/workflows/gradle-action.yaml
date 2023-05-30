@@ -46,10 +46,10 @@ jobs:
       # github_token: ${{ secrets.GITHUB_TOKEN }}
       #    publish_dir: build/docs/groovydoc
 
-      - name: Copy groovydoc files
-        run: |
-          mkdir docs
-          cp -r build/docs/groovydoc/* docs/
+      #- name: Copy groovydoc files
+      #  run: |
+      #    mkdir docs
+      #    cp -r build/docs/groovydoc/* docs/
 
       - name: Configure Git
         run: |

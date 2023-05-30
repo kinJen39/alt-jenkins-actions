@@ -73,6 +73,8 @@ jobs:
           git branch
           echo "git status"
           git status
+          ls build/docs/groovydoc
+          echo "ls build/docs/groovydoc"
           echo "git add docs/"
           git add docs/
           echo "git commit -m Update documentation"

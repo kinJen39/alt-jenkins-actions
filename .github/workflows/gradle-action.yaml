@@ -75,8 +75,8 @@ jobs:
           git status
           echo "ls build/docs/groovydoc/DefaultPackage"
           ls build/docs/groovydoc/DefaultPackage
-          echo "git add docs/"
-          git add docs/
+          echo "git add build/docs/groovydoc/"
+          git add build/docs/groovydoc/
           echo "git commit -m Update documentation"
           git commit -m "Update documentation"
           echo "git push origin gh-pages"

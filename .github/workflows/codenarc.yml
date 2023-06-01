@@ -41,8 +41,8 @@ jobs:
           git fetch origin
           echo "git checkout -f codenarc"
           git checkout -f codenarc
-          echo "cp -rf build/reports/codenarc/main.html docs/main.html"
-          cp -rf build/reports/codenarc/main.html docs/main.html
+          echo "cp build/reports/codenarc/main.html docs/main.html"
+          cp build/reports/codenarc/main.html docs/main.html
 
       - name: Commit and push changes
         run: |

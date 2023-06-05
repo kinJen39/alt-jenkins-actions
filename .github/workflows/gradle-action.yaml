@@ -29,7 +29,7 @@ jobs:
         if: steps.changed-files-specific.outputs.any_changed != 'true'
         run: |
           echo "No file in the docs directory has been updated"
-          return
+          exit 0
         
       
       - name: Build with Gradle

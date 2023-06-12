@@ -26,7 +26,7 @@ jobs:
           distribution: 'temurin'
         
       - name: Build with Gradle
-        run: gradle build CodenarcMain groovydoc --info
+        run: gradle build CodenarcMain groovydoc --exclude-task codenarcMain --info
         
       - name: Get changed files in the docs folder
         id: docs-changed-files

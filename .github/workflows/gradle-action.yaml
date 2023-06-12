@@ -24,24 +24,25 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          
-      - name: Run step if any file(s) in the docs folder change
-        if: steps.changed-files-specific.outputs.any_changed != 'true'
-        run: |
-          echo "No file in the docs directory has been updated"
-          exit 0
         
-      
       - name: Build with Gradle
         run: gradle build CodenarcMain groovydoc --info
+        
+      - name: Get changed files in the docs folder
+        id: docs-changed-files
+        uses: tj-actions/changed-files@v36
+        with:
+          files: build/docs/groovydoc/*.{html}
       
       - name: Upload Groovydoc
+        if: steps.docs-changed-files.outputs.any_changed == 'true'
         uses: actions/upload-artifact@v2
         with:
           name: Groovy Documentation
           path: build/docs/groovydoc
           
       - name: Upload Codenarc Report
+        if: steps.docs-changed-files.outputs.any_changed == 'true'
         uses: actions/upload-artifact@v2
         with:
           name: Codenarc Report 
@@ -59,11 +60,13 @@ jobs:
       #    cp -r build/docs/groovydoc/* docs/
 
       - name: Configure Git
+        if: steps.docs-changed-files.outputs.any_changed == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           
       - name: Create and switch to gh-pages
+        if: steps.docs-changed-files.outputs.any_changed == 'true'
         run: |
           echo "git branch"
           git branch
@@ -79,6 +82,7 @@ jobs:
           cp -rf build/docs/groovydoc/* docs/
           
       - name: Commit and push changes
+        if: steps.docs-changed-files.outputs.any_changed == 'true'
         run: |
           echo "git branch"
           git branch

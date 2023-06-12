@@ -35,7 +35,7 @@ jobs:
           files: build/docs/groovydoc/*.{html}
       
       - name: Upload Groovydoc
-        if: steps.docs-changed-files.outputs.any_changed == 'true'
+        if: steps.docs-changed-files.outputs.any_changed != 'true'
         uses: actions/upload-artifact@v2
         with:
           name: Groovy Documentation

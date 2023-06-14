@@ -38,3 +38,8 @@ ruleset {
 
     ConfusingTernary(priority:3)
 }
+
+excludeRules {
+    ruleSet 'Cobertura'
+    // Add any other rules or rule sets you want to exclude
+}

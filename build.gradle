@@ -36,6 +36,11 @@ codenarc {
     toolVersion = '2.0.0'
     configFile = file('config/codenarc.groovy')
     sourceSets = sourceSets.main.groovy.srcDirs
+    excludes = [
+        'org.codenarc.rule.junit.CoberturaCheck',
+        'org.codenarc.rule.junit.CoberturaCombinedCheck',
+        'org.codenarc.rule.junit.CoberturaDataFileCheck'
+    ]
 }
 
 project.gradle.startParameter.excludedTaskNames.add('check')

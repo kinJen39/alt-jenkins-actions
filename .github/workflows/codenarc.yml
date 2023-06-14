@@ -55,4 +55,8 @@ jobs:
           echo "git commit -m Update Codenarc Report"
           git commit -m "Update Codenarc Report"
           echo "git push origin codenarc"
-          git push origin codenarc   
+          git push origin codenarc
+          
+      - name: Show Link
+        run: |
+          echo "Link: [Codenarc Report](https://kinjen39.github.io/alt-jenkins-actions/codenarc.html)"

@@ -32,7 +32,7 @@ dependencies {
 
 codenarc {
     ignoreFailures = true
-    //reportFormat = 'console'
+    reportFormat = 'console'
     toolVersion = '2.0.0'
     configFile = file('config/codenarc.groovy')
     sourceSets = sourceSets.main.groovy.srcDirs

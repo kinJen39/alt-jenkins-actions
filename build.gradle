@@ -31,7 +31,7 @@ dependencies {
 }
 
 codenarc {
-    ignoreFailures = true
+    //ignoreFailures = true
     //reportFormat = 'console'
     toolVersion = '2.0.0'
     configFile = file('config/codenarc.groovy')

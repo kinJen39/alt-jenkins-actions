@@ -31,24 +31,18 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-      - name: Create and switch to codenarc branch
+      - name: Create and switch to gh-pages branch
         run: |
           echo "git branch"
           git branch
-          echo "git branch"
+          echo "git status"
           git status
           echo "git fetch origin"
           git fetch origin
-          echo "git checkout -f codenarc"
-          git checkout -f codenarc
-          echo "ls"
-          ls
-          echo "ls build/"
-          ls build/
-          echo "ls build/reports/codenarc/"
-          ls build/reports/codenarc/
+          echo "git checkout -f gh-pages"
+          git checkout -f gh-pages
           echo "cp build/reports/codenarc/main.html docs/main.html"
-          cp build/reports/codenarc/main.html docs/main.html
+          cp build/reports/codenarc/main.html docs/codenarc.html
 
       - name: Commit and push changes
         run: |
@@ -60,8 +54,8 @@ jobs:
           git add docs/
           echo "git commit -m Update Codenarc Report"
           git commit -m "Update Codenarc Report"
-          echo "git push origin codenarc"
-          git push origin codenarc
+          echo "git push origin gh-pages"
+          git push origin gh-pages
           
       - name: Codenarc Report
         run: |

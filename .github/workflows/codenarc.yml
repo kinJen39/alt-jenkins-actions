@@ -21,17 +21,20 @@ jobs:
         run: gradle CodenarcMain codenarcTest
 
       - name: Upload Codenarc Report
+        if: ${{ failure() }} 
         uses: actions/upload-artifact@v2
         with:
           name: Codenarc Report 
           path: build/reports/codenarc
 
       - name: Configure Git
+        if: ${{ failure() }} 
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
       - name: Create and switch to gh-pages branch
+        if: ${{ failure() }} 
         run: |
           echo "git branch"
           git branch
@@ -45,6 +48,7 @@ jobs:
           cp build/reports/codenarc/main.html docs/codenarc.html
 
       - name: Commit and push changes
+        if: ${{ failure() }} 
         run: |
           echo "git branch"
           git branch
@@ -58,5 +62,6 @@ jobs:
           git push origin gh-pages
           
       - name: Codenarc Report
+        if: ${{ failure() }} 
         run: |
           echo "Link: [Codenarc Report](https://kinjen39.github.io/alt-jenkins-actions/codenarc.html)" >> $GITHUB_STEP_SUMMARY

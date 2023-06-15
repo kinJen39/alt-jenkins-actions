@@ -57,6 +57,6 @@ jobs:
           echo "git push origin codenarc"
           git push origin codenarc
           
-      - name: Show Link
+      - name: Codenarc Report
         run: |
-          echo "Link: [Codenarc Report](https://kinjen39.github.io/alt-jenkins-actions/codenarc.html)"
+          echo "Link: [Codenarc Report](https://kinjen39.github.io/alt-jenkins-actions/codenarc.html)" >> $GITHUB_STEP_SUMMARY

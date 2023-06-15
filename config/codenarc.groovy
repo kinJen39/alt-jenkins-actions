@@ -5,7 +5,9 @@ ruleset {
     ruleset('rulesets/braces.xml')
     ruleset('rulesets/comments.xml')
     ruleset('rulesets/concurrency.xml')
-    ruleset('rulesets/convention.xml')
+    ruleset('rulesets/convention.xml'){
+        exclude 'NoDef'
+    }
     ruleset('rulesets/design.xml')
     ruleset('rulesets/dry.xml')
     ruleset('rulesets/enhanced.xml')

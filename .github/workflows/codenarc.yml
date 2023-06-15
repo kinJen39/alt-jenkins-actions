@@ -41,6 +41,12 @@ jobs:
           git fetch origin
           echo "git checkout -f codenarc"
           git checkout -f codenarc
+          echo "ls"
+          ls
+          echo "ls build/"
+          ls build/
+          echo "ls build/reports/codenarc/"
+          ls build/reports/codenarc/
           echo "cp build/reports/codenarc/main.html docs/main.html"
           cp build/reports/codenarc/main.html docs/main.html
 

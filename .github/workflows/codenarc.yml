@@ -8,7 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    permissions:
+      pull-requests: write
+  
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -65,3 +67,9 @@ jobs:
         if: ${{ failure() }} 
         run: |
           echo "Link: [Codenarc Report](https://kinjen39.github.io/alt-jenkins-actions/codenarc.html)" >> $GITHUB_STEP_SUMMARY
+          
+      - name: Comment Report
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            Link: [Codenarc Report](https://kinjen39.github.io/alt-jenkins-actions/codenarc.html)

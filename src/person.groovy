@@ -4,6 +4,7 @@
 class Person {
     String name
     int age
+    String address
     
     /**
      * Constructs a new Person object with the specified name and age.

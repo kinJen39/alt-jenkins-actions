@@ -1,6 +1,6 @@
 /**
  * Class that does not do anything, but is here to be a Java class run through
- * groovydoc.
+ * groovydoc..
  */
 class Calculator {
     // Method to add two numbers

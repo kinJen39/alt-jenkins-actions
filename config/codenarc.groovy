@@ -1,28 +1,16 @@
 ruleset {
     description 'CodeNarc Project RuleSet'
 
-    ruleset('rulesets/basic.xml') {
-        include 'EmptyMethod'
+    EmptyMethod
+    ImplicitReturnStatement
+    PublicMethodsBeforeNonPublicMethods
+    MissingNewInThrowStatement
+    LineLength {
+        length = 200
     }
-    ruleset('rulesets/convention.xml'){
-        include 'ImplicitReturnStatement'
-        include 'PublicMethodsBeforeNonPublicMethods'
+    SpaceAroundMapEntryColon {
+        characterAfterColonRegex = /\s/
     }
-    ruleset('rulesets/exceptions.xml') {
-        include 'MissingNewInThrowStatement'
-    }
-    ruleset('rulesets/formatting.xml') {
-        LineLength {
-            length = 200
-        }
-        SpaceAroundMapEntryColon {
-            characterAfterColonRegex = /\s/
-        }
-    }
-    ruleset('rulesets/unnecessary.xml') {
-        include 'UnnecessaryElseStatement'
-    }
-    ruleset('rulesets/unused.xml') {
-        include 'UnusedMethodParameter'
-    }
+    UnnecessaryElseStatement
+    UnusedMethodParameter
 }

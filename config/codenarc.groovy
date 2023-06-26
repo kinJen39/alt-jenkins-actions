@@ -13,4 +13,9 @@ ruleset {
     }
     UnnecessaryElseStatement
     UnusedMethodParameter
+    SpaceAfterOpeningBrace
+    SpaceBeforeOpeningBrace
+    SpaceBeforeClosingBrace
+    ClassEndsWithBlankLine
+    ClassStartsWithBlankLine
 }

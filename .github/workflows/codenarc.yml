@@ -71,4 +71,4 @@ jobs:
         uses: mshick/add-pr-comment@v2
         with:
           message: |
-            Link: [Codenarc Report](https://kinjen39.github.io/alt-jenkins-actions/codenarc.html)
+            ⚠️ Link: [Codenarc Report](https://kinjen39.github.io/alt-jenkins-actions/codenarc.html)

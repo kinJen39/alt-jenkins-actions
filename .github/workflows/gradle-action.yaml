@@ -35,64 +35,62 @@ jobs:
           files: build/docs/groovydoc/*.{html}
       
       - name: Upload Groovydoc
-        if: steps.docs-changed-files.outputs.any_changed != 'true'
         uses: actions/upload-artifact@v2
         with:
           name: Groovy Documentation
           path: build/docs/groovydoc
           
       - name: Upload Codenarc Report
-        if: steps.docs-changed-files.outputs.any_changed == 'true'
         uses: actions/upload-artifact@v2
         with:
           name: Codenarc Report 
           path: build/reports/codenarc
       
-      #- name: Deploy documentation
-      #  uses: peaceiris/actions-gh-pages@v3
-      #  with:
-      # github_token: ${{ secrets.GITHUB_TOKEN }}
-      #    publish_dir: build/docs/groovydoc
+      - name: Deploy documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/docs/groovydoc
 
       #- name: Copy groovydoc files
       #  run: |
       #    mkdir docs
       #    cp -r build/docs/groovydoc/* docs/
 
-      - name: Configure Git
-        if: steps.docs-changed-files.outputs.any_changed == 'true'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+      #- name: Configure Git
+      #  if: steps.docs-changed-files.outputs.any_changed == 'true'
+      #  run: |
+      #    git config --local user.email "action@github.com"
+      #    git config --local user.name "GitHub Action"
           
-      - name: Create and switch to gh-pages
-        if: steps.docs-changed-files.outputs.any_changed == 'true'
-        run: |
-          echo "git branch"
-          git branch
-          echo "git branch"
-          git status
-          echo "git fetch origin"
-          git fetch origin
-          echo "git checkout -f gh-pages"
-          git checkout -f gh-pages
-          echo "rm -r docs/DefaultPackage"
-          rm -r docs/DefaultPackage
-          echo "cp -rf build/docs/groovydoc/* docs/"
-          cp -rf build/docs/groovydoc/* docs/
+      #- name: Create and switch to gh-pages
+      #  if: steps.docs-changed-files.outputs.any_changed == 'true'
+      #  run: |
+      #    echo "git branch"
+      #    git branch
+      #    echo "git branch"
+      #    git status
+      #    echo "git fetch origin"
+      #    git fetch origin
+      #    echo "git checkout -f gh-pages"
+      #   git checkout -f gh-pages
+      #    echo "rm -r docs/DefaultPackage"
+      #    rm -r docs/DefaultPackage
+      #   echo "cp -rf build/docs/groovydoc/* docs/"
+      #    cp -rf build/docs/groovydoc/* docs/
           
-      - name: Commit and push changes
-        if: steps.docs-changed-files.outputs.any_changed == 'true'
-        run: |
-          echo "git branch"
-          git branch
-          echo "git status"
-          git status
-          echo "ls build/docs/groovydoc/DefaultPackage"
-          ls build/docs/groovydoc/DefaultPackage
-          echo "git add docs/"
-          git add docs/
-          echo "git commit -m Update documentation"
-          git commit -m "Update documentation"
-          echo "git push origin gh-pages"
-          git push origin gh-pages   
+      #- name: Commit and push changes
+      #  if: steps.docs-changed-files.outputs.any_changed == 'true'
+      #  run: |
+      #    echo "git branch"
+      #    git branch
+      #    echo "git status"
+      #    git status
+      #    echo "ls build/docs/groovydoc/DefaultPackage"
+      #    ls build/docs/groovydoc/DefaultPackage
+      #    echo "git add docs/"
+      #    git add docs/
+      #    echo "git commit -m Update documentation"
+      #    git commit -m "Update documentation"
+      #    echo "git push origin gh-pages"
+      #    git push origin gh-pages   

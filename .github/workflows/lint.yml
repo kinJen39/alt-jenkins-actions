@@ -24,3 +24,4 @@ jobs:
             use-black: false
             use-mypy: false
             use-isort: false
+            files: ${{ steps.get_files.outputs.files }}

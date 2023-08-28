@@ -9,19 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     name: Lint
     steps:
-      - name: Get Changed Python Files
-        id: get_files
-        run: |
-          echo "::set-output name=files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.py$')"
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - uses: actions/checkout@v1
       - uses: ricardochaves/python-lint@v1.4.0
         with:
-            python-root-list: ${{ steps.get_files.outputs.files }}
+            python-root-list: ${{ steps.changed-files-yaml.outputs.doc_all_changed_files }}
             use-pylint: false
             use-pycodestyle: false
             use-flake8: true
             use-black: false
             use-mypy: false
             use-isort: false
-            files: ${{ steps.get_files.outputs.files }}

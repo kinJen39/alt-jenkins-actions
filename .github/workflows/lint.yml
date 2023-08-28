@@ -1,0 +1,26 @@
+name: flake8 Lint
+
+on:
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  flake8-lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - name: Get Changed Python Files
+        id: get_files
+        run: |
+          echo "::set-output name=files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.py$')"
+
+      - uses: actions/checkout@v1
+      - uses: ricardochaves/python-lint@v1.4.0
+        with:
+            python-root-list: ${{ steps.get_files.outputs.files }}
+            use-pylint: false
+            use-pycodestyle: false
+            use-flake8: true
+            use-black: false
+            use-mypy: false
+            use-isort: false

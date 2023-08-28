@@ -7,16 +7,25 @@ on:
 jobs:
   flake8-lint:
     runs-on: ubuntu-latest
-    name: Lint
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    name: Test changed-files
+    permissions:
+      pull-requests: read
 
-      - uses: actions/checkout@v1
-      - uses: ricardochaves/python-lint@v1.4.0
+    steps:
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v38
+
+      - name: List all changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+          done
+
+      - name: Flake8
+        uses: ricardochaves/python-lint@v1.4.0
         with:
-            python-root-list: ${{ steps.changed-files-yaml.outputs.doc_all_changed_files }}
+            python-root-list: ${{ steps.changed-files.outputs.all_changed_files }}
             use-pylint: false
             use-pycodestyle: false
             use-flake8: true

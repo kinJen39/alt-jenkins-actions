@@ -21,9 +21,9 @@ jobs:
     
       - name: Exit workflow if no .py file has been added or modified
         run: |
-          if [ "${{ steps.changed-files.outputs.python_all_changed_files_count }}" == 0 ]; then
+          if [ "${{ steps.changed-files.outputs.python_all_changed_files_count }}" != 0 ]; then
             echo "Exiting workflow: no .py file has been added or modified"
-            exit 0
+            echo "execute_flake8=true" >> $GITHUB_ENV
           fi
 
       - name: List all changed files
@@ -31,16 +31,21 @@ jobs:
           for file in ${{ steps.changed-files.outputs.python_all_changed_files }}; do
             echo "$file was changed"
           done
+        if: execute_fake8 == 'true'
           
       - name: Check out source repository
         uses: actions/checkout@v3
+        if: execute_fake8 == 'true'
+
       - name: Set up Python environment
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
+        if: execute_fake8 == 'true'
 
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
           path: "${{ steps.changed-files.outputs.python_all_changed_files }}"
           plugins: "flake8-unused-globals==0.1.10"
+        if: execute_fake8 == 'true'

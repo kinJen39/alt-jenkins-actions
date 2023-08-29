@@ -40,6 +40,10 @@ jobs:
         uses: actions/checkout@v3
         if: ${{ env.execute_flake8 }} == "true"
 
+      - name: Check variable
+        run: |
+          echo ${{ env.execute_flake8 }}
+
       - name: Set up Python environment
         uses: actions/setup-python@v4
         with:

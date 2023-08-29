@@ -6,6 +6,9 @@ jobs:
   flake8-lint:
     runs-on: ubuntu-latest
     name: Lint
+    permissions:
+      pull-requests: read
+  
     steps:
       - name: Get changed files
         id: changed-files
@@ -28,4 +31,4 @@ jobs:
         uses: py-actions/flake8@v2
         with:
           path: "${{ steps.changed-files.outputs.all_changed_files }}"
-          plugins: "flake8-unused-globals==0.1.4"
+          plugins: "flake8-unused-globals==0.1.10"

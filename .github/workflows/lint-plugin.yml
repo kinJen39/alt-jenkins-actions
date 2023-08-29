@@ -28,21 +28,16 @@ jobs:
             echo "Exiting workflow: no .py file has been added or modified"
           fi
 
-
       - name: List all changed files
         run: |
           for file in ${{ steps.changed-files.outputs.python_all_changed_files }}; do
             echo "$file was changed"
           done
-          echo ${{ env.execute_flake8 }}
+        if: env.execute_flake8 == 'true'
           
       - name: Check out source repository
         uses: actions/checkout@v3
         if: env.execute_flake8 == 'true'
-
-      - name: Check variable
-        run: |
-          echo ${{ env.execute_flake8 }}
 
       - name: Set up Python environment
         uses: actions/setup-python@v4
@@ -50,9 +45,16 @@ jobs:
           python-version: "3.11"
         if: env.execute_flake8 == 'true'
 
-      - name: flake8 Lint
+      - name: Flake8 Lint
         uses: py-actions/flake8@v2
         with:
           path: "${{ steps.changed-files.outputs.python_all_changed_files }}"
           plugins: "flake8-unused-globals==0.1.10"
         if: env.execute_flake8 == 'true'
+
+      - name: Comment  in PR
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            ⚠️ Some Python coding style violations were found. Find the complete report on the details of Python Flake8 check
+        if: failure() 

@@ -18,6 +18,13 @@ jobs:
           files_yaml: |
             python:
               - '**.py'
+    
+      - name: Exit workflow if no .py file has been added or modified
+        run: |
+          if [ "${{ steps.changed-files.outputs.python_all_changed_files }}" == "true" ]; then
+            echo "Exiting workflow: no .py file has been added or modified"
+            exit 0
+          fi
 
       - name: List all changed files
         run: |

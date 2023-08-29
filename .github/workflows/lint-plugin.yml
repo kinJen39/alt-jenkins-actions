@@ -18,7 +18,7 @@ jobs:
 
       - name: List all changed files
         run: |
-          for file in ${{ steps.changed-files.outputs.python_changed_files }}; do
+          for file in ${{ steps.changed-files.outputs.python_all_changed_files }}; do
             echo "$file was changed"
           done
           
@@ -32,5 +32,5 @@ jobs:
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
-          path: "${{ steps.changed-files.outputs.python_changed_files }}"
+          path: "${{ steps.changed-files.outputs.python_all_changed_files }}"
           plugins: "flake8-unused-globals==0.1.10"

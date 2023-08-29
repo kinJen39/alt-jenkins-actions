@@ -1,4 +1,5 @@
-def greeting(name ):
+def greeting(name):
     print("Hello, " + name)
+
 
 greeting("Alice")

@@ -38,7 +38,7 @@ jobs:
           
       - name: Check out source repository
         uses: actions/checkout@v3
-        if: ${{ env.execute_flake8 }} == "true"
+        if: env.execute_flake8 == "true"
 
       - name: Check variable
         run: |
@@ -48,11 +48,11 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
-        if: ${{ env.execute_flake8 }} == "true"
+        if: env.execute_flake8 == 'true'
 
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
           path: "${{ steps.changed-files.outputs.python_all_changed_files }}"
           plugins: "flake8-unused-globals==0.1.10"
-        if: ${{ env.execute_flake8 }} == "true"
+        if: env.execute_flake8 == "true"

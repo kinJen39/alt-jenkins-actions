@@ -31,21 +31,21 @@ jobs:
           for file in ${{ steps.changed-files.outputs.python_all_changed_files }}; do
             echo "$file was changed"
           done
-        if: execute_fake8 == 'true'
+        if: execute_flake8 == 'true'
           
       - name: Check out source repository
         uses: actions/checkout@v3
-        if: execute_fake8 == 'true'
+        if: execute_flake8 == 'true'
 
       - name: Set up Python environment
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
-        if: execute_fake8 == 'true'
+        if: execute_flake8 == 'true'
 
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
           path: "${{ steps.changed-files.outputs.python_all_changed_files }}"
           plugins: "flake8-unused-globals==0.1.10"
-        if: execute_fake8 == 'true'
+        if: execute_flake8 == 'true'

@@ -1,0 +1,31 @@
+name: flake8 Lint plugin
+
+on: pull_request
+
+jobs:
+  flake8-lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v38
+
+      - name: List all changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+          done
+          
+      - name: Check out source repository
+        uses: actions/checkout@v3
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
+        with:
+          path: "${{ steps.changed-files.outputs.all_changed_files }}"
+          plugins: "flake8-unused-globals==0.1.4"

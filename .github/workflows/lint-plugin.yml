@@ -56,7 +56,6 @@ jobs:
       - name: List all changed files
         run: |
           echo ${{steps.flake.outcome}}
-        if: env.execute_flake8 == 'true'
 
       - name: Comment  in PR
         uses: mshick/add-pr-comment@v2

@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-# Comment to make push
+# Comment to make push f
 MAINTAINER Angello Maggio "angellom@jfrog.com"
 RUN apt-get update -y
 

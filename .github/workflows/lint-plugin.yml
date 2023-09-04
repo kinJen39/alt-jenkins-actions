@@ -46,6 +46,7 @@ jobs:
         if: env.execute_flake8 == 'true'
 
       - name: Flake8 Lint
+        id: flake
         uses: py-actions/flake8@v2
         with:
           path: "${{ steps.changed-files.outputs.python_all_changed_files }}"
@@ -57,4 +58,4 @@ jobs:
         with:
           message: |
             ⚠️ Some Python coding style violations were found. Find the complete report on the details of Python Flake8 check
-        if: failure() 
+        if: steps.flake.outcome == 'failure'

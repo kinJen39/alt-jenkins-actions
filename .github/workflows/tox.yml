@@ -56,7 +56,7 @@ jobs:
       # Check python style
       - name: Python Style check
         run: |
-          tox -r -e lint -- -x ${{ steps.changed-files.outputs.python_all_changed_files }}
+          tox -r -e lint -- ${{ steps.changed-files.outputs.python_all_changed_files }}
     
       - name: Comment  in PR
         uses: mshick/add-pr-comment@v2

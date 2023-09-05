@@ -1,0 +1,67 @@
+name: Pyhton Lint Tox
+
+on:
+  pull_request:
+    paths:
+      - '**.py'
+
+permissions:
+  contents: read
+
+jobs:
+  flake8-lint:
+    runs-on: ubuntu-latest
+    name: Lint
+
+
+    steps:
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v38
+        with:
+          files_yaml: |
+            python:
+              - '**.py'
+
+      - name: Exit workflow if no .py file has been added or modified
+        run: |
+          if [ "${{ steps.changed-files.outputs.python_all_changed_files_count }}" != 0 ]; then
+            echo "execute_flake8=true" >> $GITHUB_ENV
+          else
+            echo "execute_flake8=false" >> $GITHUB_ENV
+            echo "Exiting workflow: no .py file has been added or modified"
+          fi
+
+      - name: List all changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.python_all_changed_files }}; do
+            echo "$file was changed"
+          done
+        if: env.execute_flake8 == 'true'
+
+
+      - name: Check out source repository
+        uses: actions/checkout@v3
+        if: env.execute_flake8 == 'true'
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+        if: env.execute_flake8 == 'true'
+
+      - name: Install tox
+        run: pip install tox
+
+      # Check python style
+      - name: Python Style check
+        run: |
+          tox -r -e lint -- -x ${{ steps.changed-files.outputs.python_all_changed_files }}
+    
+      - name: Comment  in PR
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            ⚠️ Some Python coding style violations were found. Find the complete report on the details of Python Flake8 check
+        if: ${{ failure() }} 
+      

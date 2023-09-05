@@ -47,7 +47,7 @@ jobs:
       - name: Set up Python environment
         uses: actions/setup-python@v4
         with:
-          python-version: "3.8"
+          python-version: "3.7.4"
         if: env.execute_flake8 == 'true'
 
       - name: Install tox

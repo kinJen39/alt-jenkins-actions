@@ -53,6 +53,9 @@ jobs:
       - name: Install tox
         run: pip install tox
 
+      - name: Flake8 Annotator
+        uses: rbialon/flake8-annotations@v1.1
+
       # Check python style
       - name: Python Style check
         run: |

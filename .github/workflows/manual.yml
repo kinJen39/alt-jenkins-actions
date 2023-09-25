@@ -18,8 +18,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Check Clippy
-      run: cargo clippy --version
+    #- name: Check Clippy
+    #  run: cargo clippy --version
     - name: Try running clippy
       uses: actions-rs/clippy-check@v1
       with:

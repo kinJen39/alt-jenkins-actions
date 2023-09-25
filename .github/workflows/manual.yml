@@ -11,10 +11,7 @@ jobs:
   # This workflow contains a single job called "greet"
   greet:
     name: Test gradle image
-    runs-on: 
-      - self-hosted
-      - roseville
-      - X64
+    runs-on: ubuntu-latest
       
     container:
       image: python:3.9

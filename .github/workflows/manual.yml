@@ -12,9 +12,6 @@ jobs:
   greet:
     name: Test gradle image
     runs-on: ubuntu-latest
-      
-    container:
-      image: python:3.9
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
